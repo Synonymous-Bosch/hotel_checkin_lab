@@ -20,7 +20,7 @@ function App() {
       console.log(data);
       setCheckinList(data)
     })
-  },[]);
+  },[]);      
 
   const handleCheckin = (checkin) => {
     postCheckin(checkin)  
