@@ -1,6 +1,6 @@
 import CheckinItem from "./CheckinItem";
 
-const CheckinList = (guests, deleteCheckin) => {
+const CheckinList = ({guests, deleteCheckin}) => {
   if (!guests) return <h2>Loading...</h2>;
   const guestList = guests.map((guest) => {
     return (
