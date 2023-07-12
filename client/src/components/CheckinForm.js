@@ -19,6 +19,7 @@ const CheckinForm = ({handleCheckin}) => {
       e.preventDefault()
       const guestCheckin = {"name": name, "email": email, "status": false }
       handleCheckin(guestCheckin)
+      e.target.reset()
     }
 
     return(
