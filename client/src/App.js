@@ -4,6 +4,7 @@ import CheckinForm from "./components/CheckinForm";
 import CheckinList from "./components/CheckinList";
 import { getCheckins, postCheckin, deleteCheckin } from "./components/CheckinService"; 
 
+
 function App() {
   const [checkinList, setCheckinList] = useState([]);
 
@@ -29,5 +30,7 @@ function App() {
     </>
   );
 }
+
+
 
 export default App;
