@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 const postCheckin = require('./CheckinService')
 
-const CheckinForm = ({handleCheckin}) => {
+const CheckinForm = ({handleCheckin, postCheckin}) => {
 
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
@@ -18,6 +18,7 @@ const CheckinForm = ({handleCheckin}) => {
     const handleSubmit = (e) => {
       e.preventDefault()
       const guestCheckin = {"name": name, "email": email, "status": false }
+      postCheckin(guestCheckin)
       handleCheckin(guestCheckin)
       e.target.reset()
     }

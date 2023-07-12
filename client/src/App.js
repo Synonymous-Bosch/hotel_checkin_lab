@@ -19,8 +19,7 @@ function App() {
     postCheckin(checkin)  
     const tempCheckins = [...checkinList]
     tempCheckins.push(checkin);
-    setCheckinList(tempCheckins)
-    
+    setCheckinList(tempCheckins);;
   }
 
   const deleteCheckin = (checkinId) => {
@@ -36,7 +35,7 @@ function App() {
   return (
     <>
       <h1>Hotel Checkin</h1>
-      <CheckinForm handleCheckin={handleCheckin}  />
+      <CheckinForm handleCheckin={handleCheckin} postCheckin={postCheckin}  />
       <CheckinList guests={checkinList} deleteCheckin={deleteCheckin} />
     </>
   );
