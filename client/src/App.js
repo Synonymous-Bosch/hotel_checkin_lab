@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useState, useEffect } from 'react';
 import CheckinForm from "./components/CheckinForm";
+import CheckinList from "./components/CheckinList";
 import { getCheckins, postCheckin, deleteCheckin } from "./components/CheckinService"; 
 
 function App() {
@@ -23,7 +24,8 @@ function App() {
   return (
     <>
       <h1>Hotel Checkin</h1>
-      <CheckinForm handleCheckin={handleCheckin} />
+      <CheckinForm handleCheckin={handleCheckin}  />
+      <CheckinList guests={checkinList} deleteCheckin={deleteCheckin} />
     </>
   );
 }
