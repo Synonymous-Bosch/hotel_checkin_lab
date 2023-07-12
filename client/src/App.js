@@ -36,7 +36,7 @@ function App() {
   return (
     <>
       <h1>Hotel Checkin</h1>
-      <CheckinForm handleCheckin={handleCheckin}  />
+      <CheckinForm handleCheckin={handleCheckin} />
       <CheckinList guests={checkinList} deleteCheckin={deleteCheckin} />
     </>
   );

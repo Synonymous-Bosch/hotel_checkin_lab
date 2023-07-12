@@ -18,7 +18,7 @@ const CheckinForm = ({handleCheckin}) => {
     const handleSubmit = (e) => {
       e.preventDefault()
       const guestCheckin = {"name": name, "email": email, "status": false }
-      handleCheckin(guestCheckin)
+      handleCheckin(guestCheckin);
       e.target.reset()
     }
 
