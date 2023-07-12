@@ -2,7 +2,14 @@ import "./App.css";
 import React, { useState, useEffect } from 'react';
 import CheckinForm from "./components/CheckinForm";
 import CheckinList from "./components/CheckinList";
+import styled from "styled-components";
 import { getCheckins, postCheckin, deleteCheckin as apiDeleteCheckin } from "./components/CheckinService"; 
+
+
+const Title = styled.h1`
+  text-align: center;
+  font-family: "Proxima Nova", Arial, Helvetica, sans-serif;
+`;
 
 function App() {
   const [checkinList, setCheckinList] = useState([]);
@@ -35,7 +42,7 @@ function App() {
 
   return (
     <>
-      <h1>Hotel Checkin</h1>
+      <Title>Hotel Checkin</Title>
       <CheckinForm handleCheckin={handleCheckin}  />
       <CheckinList guests={checkinList} deleteCheckin={deleteCheckin} />
     </>
