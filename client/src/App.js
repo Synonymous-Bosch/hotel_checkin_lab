@@ -1,6 +1,5 @@
-import "./App.css";
 import React, { useState, useEffect } from 'react';
-import CheckinForm from "./components/CheckinForm";
+import CheckInOut from "./components/CheckInOut";
 import CheckinList from "./components/CheckinList";
 import styled from "styled-components";
 import { getCheckins, postCheckin, deleteCheckin as apiDeleteCheckin } from "./components/CheckinService"; 
@@ -22,12 +21,22 @@ function App() {
     })
   },[]);      
 
-  const handleCheckin = (checkin) => {
-    postCheckin(checkin)  
-    const tempCheckins = [...checkinList]
-    tempCheckins.push(checkin);
-    setCheckinList(tempCheckins)
-    
+  // Label: Changed function name to "handleCheckInOut"
+  const handleCheckInOut = async (checkin, operationType) => {
+    try {
+      if (operationType === "checkin") {
+        postCheckin(checkin)  
+    const newCheckin = await postCheckin(checkin);
+        // Label: Spread previous checkinList and add newCheckin
+        setCheckinList([...checkinList, newCheckin]);
+      } else if (operationType === "checkout") {
+        await deleteCheckin(checkin);
+        // Label: Filter out the checkin being checked out
+        setCheckinList(t.filter((item) => item._id !== checkin));
+      }
+    } catch (error) {
+      console.error("Error handling check-in/out:", error);
+      
   }
 
   const deleteCheckin = (checkinId) => {
@@ -39,12 +48,15 @@ function App() {
       setCheckinList(temp)
     })
   }
+  };
 
   return (
     <>
-      <Title>Hotel Checkin</Title>
-      <CheckinForm handleCheckin={handleCheckin}  />
-      <CheckinList guests={checkinList} deleteCheckin={deleteCheckin} />
+      <Title>Hotel Check-in</Title>
+      {/* Label: Pass "handleCheckInOut" as prop */}
+      <CheckInOut addCheckInOut={handleCheckInOut} />
+      {/* Label: Pass "deleteCheckin" as prop */}
+      <CheckinList guests={checkinList} deleteCheckin={handleCheckInOut} />
     </>
   );
 }
